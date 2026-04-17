@@ -120,7 +120,7 @@ body {
 }
 
 .brand-mark:hover {
-  animation: brand-bounce 700ms ease;
+  animation: brand-bounce 1350ms cubic-bezier(0.18, 1, 0.3, 1);
 }
 
 @keyframes brand-bounce {
@@ -129,20 +129,32 @@ body {
     transform: translateY(0) scale(1);
   }
 
-  20% {
-    transform: translateY(-8px) scale(1.03);
+  10% {
+    transform: translateY(2px) scale(1.14, 0.82) rotate(0deg);
   }
 
-  40% {
-    transform: translateY(0) scale(0.98);
+  22% {
+    transform: translateY(-30px) scale(0.9, 1.16) rotate(-6deg);
   }
 
-  60% {
-    transform: translateY(-4px) scale(1.01);
+  38% {
+    transform: translateY(4px) scale(1.12, 0.86) rotate(5deg);
+  }
+
+  52% {
+    transform: translateY(-18px) scale(0.94, 1.1) rotate(-4deg);
+  }
+
+  66% {
+    transform: translateY(2px) scale(1.08, 0.9) rotate(3deg);
   }
 
   80% {
-    transform: translateY(0) scale(1);
+    transform: translateY(-8px) scale(0.98, 1.04) rotate(-2deg);
+  }
+
+  92% {
+    transform: translateY(0) scale(1.02, 0.98) rotate(1deg);
   }
 }
 
