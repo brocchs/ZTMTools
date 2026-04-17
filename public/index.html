@@ -4,17 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ZeptoMail Bounce Analyzer</title>
+    <script>
+      (function () {
+        try {
+          var savedTheme = localStorage.getItem("ztmtools-theme");
+          var theme = savedTheme;
+
+          if (!theme) {
+            theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+
+          document.documentElement.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+        } catch (error) {}
+      })();
+    </script>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <main class="layout">
-      <section class="panel hero hidden-panel">
-        <p class="eyebrow">ZeptoMail Bounce Analyzer</p>
-        <h1>Baca data gagal kirim email dengan format yang lebih jelas.</h1>
-        <p class="lede">
-          Tempel JSON dari ZeptoMail, lalu aplikasi akan merangkum email sukses parsial,
-          hard bounce, alamat bermasalah, dan penyebab kegagalannya.
-        </p>
+      <section class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark">
+            <img src="/assets/app-logo.png" alt="Logo aplikasi" class="brand-logo" />
+          </div>
+          <div>
+          <p class="eyebrow">ZTMTools</p>
+          <h1 class="page-title">DAS Bounce JSON Viewer</h1>
+          <div class="lede-wrap">
+            <p class="lede">
+              Kalau saya minum kopi saya jadi semangat, kopi itu senjata rahasia saya!.
+            </p>
+          </div>
+          </div>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Ganti tema">
+          <span id="theme-toggle-label">Dark mode</span>
+        </button>
       </section>
 
       <section id="json-panel" class="panel">
@@ -90,12 +115,13 @@
       <section class="panel">
         <div class="panel-head">
           <div>
-            <p class="eyebrow">ZeptoMail Bounce Analyzer</p>
             <h2>Daftar Event</h2>
-            <p class="hint">Tampilan lain disembunyikan sementara. Analisis tetap memakai JSON yang terakhir tersimpan di browser.</p>
+            <p class="hint">
+              Event dikelompokkan per aplikasi. Analisis tetap memakai JSON terakhir yang tersimpan di browser.
+            </p>
           </div>
+          <span class="badge">Grouped by app</span>
         </div>
-        <h2>Daftar Event</h2>
         <div class="table-wrap">
           <table>
             <thead>

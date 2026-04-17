@@ -1,6 +1,7 @@
 const qs = (selector) => document.querySelector(selector);
 const storageKey = "zeptomail-bounce-json";
 const collapseKey = "zeptomail-bounce-json-collapsed";
+const themeKey = "ztmtools-theme";
 const dateTimeFormatter = new Intl.DateTimeFormat("id-ID", {
   day: "2-digit",
   month: "2-digit",
@@ -19,6 +20,25 @@ function showToast(message, isError = false) {
   setTimeout(() => {
     toast.className = "toast hidden";
   }, 3000);
+}
+
+function setTheme(theme) {
+  const root = document.documentElement;
+  const nextTheme = theme === "dark" ? "dark" : "light";
+  root.setAttribute("data-theme", nextTheme);
+  localStorage.setItem(themeKey, nextTheme);
+  qs("#theme-toggle-label").textContent = nextTheme === "dark" ? "Light mode" : "Dark mode";
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem(themeKey);
+  if (savedTheme) {
+    setTheme(savedTheme);
+    return;
+  }
+
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(prefersDark ? "dark" : "light");
 }
 
 function setJsonPanelCollapsed(collapsed) {
@@ -311,7 +331,7 @@ function renderEvents(events) {
       ([appName, appEvents]) => `
         <tr class="group-row">
           <td colspan="7">
-            ${escapeHtml(appName)} · ${escapeHtml(appEvents.length)} bounce
+            ${escapeHtml(appName)} | ${escapeHtml(appEvents.length)} bounce
           </td>
         </tr>
         ${appEvents
@@ -377,6 +397,10 @@ function bindFileInput() {
 
 function bindActions() {
   qs("#analyze-json").addEventListener("click", analyzeInput);
+  qs("#theme-toggle").addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme") || "light";
+    setTheme(current === "dark" ? "light" : "dark");
+  });
   qs("#toggle-json-panel").addEventListener("click", () => {
     const panel = qs("#json-panel");
     const collapsed = !panel.classList.contains("collapsed");
@@ -403,6 +427,7 @@ function bindActions() {
 }
 
 function init() {
+  initTheme();
   const saved = localStorage.getItem(storageKey);
   const savedCollapsed = localStorage.getItem(collapseKey) === "1";
   if (saved) {
