@@ -13,7 +13,7 @@ App lokal sederhana untuk membaca respons JSON email delivery agar penyebab emai
 ## Jalankan
 
 ```powershell
-cd d:\zeptomail
+cd d:\foldermu
 npm install
 npm start
 ```
