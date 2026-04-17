@@ -119,6 +119,33 @@ body {
   border-radius: 22px;
 }
 
+.brand-mark:hover {
+  animation: brand-bounce 700ms ease;
+}
+
+@keyframes brand-bounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  20% {
+    transform: translateY(-8px) scale(1.03);
+  }
+
+  40% {
+    transform: translateY(0) scale(0.98);
+  }
+
+  60% {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  80% {
+    transform: translateY(0) scale(1);
+  }
+}
+
 .page-title {
   margin: 0 0 10px;
   font-size: clamp(2.2rem, 4vw, 4.4rem);
