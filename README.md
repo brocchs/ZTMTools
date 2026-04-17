@@ -1,0 +1,36 @@
+# ZeptoMail Bounce Analyzer
+
+App lokal sederhana untuk membaca respons JSON ZeptoMail agar penyebab email gagal terkirim lebih mudah dianalisis.
+
+## Fungsi
+
+- Tempel JSON hasil API ZeptoMail langsung ke dashboard
+- Ringkasan total email, total recipient, bounce, gagal total, dan gagal parsial
+- Kelompok penyebab gagal kirim seperti `bad-mailbox` dan `quota-issues`
+- Daftar alamat email yang paling sering bermasalah
+- Tabel event lengkap beserta pesan diagnostik SMTP
+
+## Jalankan
+
+```powershell
+cd d:\zeptomail
+npm install
+npm start
+```
+
+Buka:
+
+```text
+http://localhost:3000
+```
+
+## Cara pakai
+
+1. Tempel JSON ZeptoMail ke kotak input, atau buka file `.json`
+2. Klik `Analisis data`
+3. Baca ringkasan penyebab gagal kirim dan daftar alamat bermasalah
+
+## Arti penyebab umum
+
+- `bad-mailbox`: alamat email tidak ada, typo, atau mailbox penerima sudah tidak valid
+- `quota-issues`: mailbox penerima penuh atau kuota server penerima habis

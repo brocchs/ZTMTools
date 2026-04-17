@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZeptoMail Bounce Analyzer</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel hero hidden-panel">
+        <p class="eyebrow">ZeptoMail Bounce Analyzer</p>
+        <h1>Baca data gagal kirim email dengan format yang lebih jelas.</h1>
+        <p class="lede">
+          Tempel JSON dari ZeptoMail, lalu aplikasi akan merangkum email sukses parsial,
+          hard bounce, alamat bermasalah, dan penyebab kegagalannya.
+        </p>
+      </section>
+
+      <section id="json-panel" class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Input JSON</h2>
+            <p class="hint">
+              Tempel respons API ZeptoMail lengkap ke bawah ini. Data diproses lokal di browser.
+            </p>
+          </div>
+          <div class="button-row">
+            <label class="button ghost file-button">
+              <input id="file-input" type="file" accept=".json,application/json" />
+              Buka file JSON
+            </label>
+            <button id="analyze-json">Analisis data</button>
+            <button id="clear-json" class="secondary">Kosongkan</button>
+          </div>
+        </div>
+        <div id="json-panel-body">
+          <textarea
+            id="json-input"
+            class="editor"
+            rows="18"
+            placeholder="Tempel JSON ZeptoMail di sini..."
+          ></textarea>
+        </div>
+        <div class="panel-footer">
+          <button id="toggle-json-panel" class="ghost" type="button">Collapse</button>
+        </div>
+      </section>
+
+      <section class="panel hidden-panel">
+        <h2>Ringkasan</h2>
+        <div id="summary-cards" class="stats"></div>
+      </section>
+
+      <section class="panel hidden-panel">
+        <h2>Penyebab Gagal Terkirim</h2>
+        <div id="reason-summary" class="list-grid empty-state">
+          Belum ada data yang dianalisis.
+        </div>
+      </section>
+
+      <section class="panel hidden-panel">
+        <h2>Grouping Per Aplikasi</h2>
+        <div id="app-summary" class="list-grid empty-state">
+          Belum ada data yang dianalisis.
+        </div>
+      </section>
+
+      <section class="panel hidden-panel">
+        <h2>Alamat Yang Bermasalah</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Jumlah gagal</th>
+                <th>Penyebab</th>
+                <th>Catatan</th>
+              </tr>
+            </thead>
+            <tbody id="recipient-rows">
+              <tr>
+                <td colspan="4" class="empty-cell">Belum ada data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">ZeptoMail Bounce Analyzer</p>
+            <h2>Daftar Event</h2>
+            <p class="hint">Tampilan lain disembunyikan sementara. Analisis tetap memakai JSON yang terakhir tersimpan di browser.</p>
+          </div>
+        </div>
+        <h2>Daftar Event</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Aplikasi</th>
+                <th>Waktu</th>
+                <th>Subjek</th>
+                <th>Penerima gagal</th>
+                <th>Penyebab</th>
+                <th>Status kirim</th>
+                <th>Diagnostik</th>
+              </tr>
+            </thead>
+            <tbody id="event-rows">
+              <tr>
+                <td colspan="7" class="empty-cell">Belum ada data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+    <script src="/app.js"></script>
+  </body>
+  </html>
