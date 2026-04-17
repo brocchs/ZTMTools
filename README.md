@@ -26,9 +26,10 @@ http://localhost:3000
 
 ## Cara pakai
 
-1. Tempel JSON ke kotak input, atau buka file `.json`
-2. Klik `Analisis data`
-3. Baca ringkasan penyebab gagal kirim dan daftar alamat bermasalah
+1. Tanya diana
+2. Tempel JSON ke kotak input, atau buka file `.json`
+3. Klik `Analisis data`
+4. Baca ringkasan penyebab gagal kirim dan daftar alamat bermasalah
 
 ## Arti penyebab umum
 
