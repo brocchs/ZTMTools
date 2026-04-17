@@ -1,10 +1,10 @@
-# ZeptoMail Bounce Analyzer
+# ZTMTools
 
-App lokal sederhana untuk membaca respons JSON ZeptoMail agar penyebab email gagal terkirim lebih mudah dianalisis.
+App lokal sederhana untuk membaca respons JSON email delivery agar penyebab email gagal terkirim lebih mudah dianalisis.
 
 ## Fungsi
 
-- Tempel JSON hasil API ZeptoMail langsung ke dashboard
+- Tempel JSON hasil API langsung ke dashboard
 - Ringkasan total email, total recipient, bounce, gagal total, dan gagal parsial
 - Kelompok penyebab gagal kirim seperti `bad-mailbox` dan `quota-issues`
 - Daftar alamat email yang paling sering bermasalah
@@ -26,7 +26,7 @@ http://localhost:3000
 
 ## Cara pakai
 
-1. Tempel JSON ZeptoMail ke kotak input, atau buka file `.json`
+1. Tempel JSON ke kotak input, atau buka file `.json`
 2. Klik `Analisis data`
 3. Baca ringkasan penyebab gagal kirim dan daftar alamat bermasalah
 
